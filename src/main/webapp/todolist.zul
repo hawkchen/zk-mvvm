@@ -1,0 +1,31 @@
+<?link rel="stylesheet" type="text/css" href="/style.css"?>
+<window viewModel="@id('vm') @init('org.zkoss.mvvm.TodoListViewModel')"
+        border="normal" width="60%" vflex="1" style="margin:auto" contentStyle="overflow:auto;">
+    <caption label="Todo List" iconSclass="z-icon-list-alt" />
+    <vlayout hflex="1" vflex="1">
+        <hbox align="center" hflex="1" sclass="todo-box">
+            <textbox value="@bind(vm.subject)" onOK="@command('addTodo')" hflex="1" placeholder="What needs to be done?" />
+            <button onClick="@command('addTodo')" iconSclass="z-icon-plus-square" />
+        </hbox>
+        <listbox model="@bind(vm.todoListModel)" vflex="1">
+            <listhead>
+                <listheader hflex="min"/>
+                <listheader/>
+                <listheader hflex="min"/>
+            </listhead>
+            <template name="model">
+                <listitem sclass="@bind(each.complete?'complete-todo':'')">
+                    <listcell>
+                        <checkbox checked="@bind(each.complete)" onCheck="@command('completeTodo',todo=each)"/>
+                    </listcell>
+                    <listcell>
+                        <textbox value="@bind(each.subject)" inplace="true" width="100%" onChange="@command('updateTodo', todo=each)"/>
+                    </listcell>
+                    <listcell>
+                        <button onClick="@command('deleteTodo',todo=each)" iconSclass="z-icon-times"/>
+                    </listcell>
+                </listitem>
+            </template>
+        </listbox>
+    </vlayout>
+</window>
