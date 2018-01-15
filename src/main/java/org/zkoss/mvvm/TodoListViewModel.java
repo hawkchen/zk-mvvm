@@ -15,7 +15,7 @@ import org.zkoss.zk.ui.util.Clients;
 import org.zkoss.zul.ListModelList;
 
 import java.io.Serializable;
-import java.util.List;
+import java.util.*;
 
 public class TodoListViewModel implements Serializable{
 	private static final long serialVersionUID = 1L;
@@ -25,6 +25,7 @@ public class TodoListViewModel implements Serializable{
 	private ListModelList<Todo> todoListModel;
 	//service class
 	private TodoListService todoListService = new TodoListService();
+	private String hints[] = {"What needs to be done?", "now what?", "to do, to do, to dooooooooooo"};
 
 	public TodoListViewModel(){
 		//get data from service and wrap it to model for the view
@@ -34,7 +35,7 @@ public class TodoListViewModel implements Serializable{
 	}
 
 	@Command //@Command declares a command method
-	@NotifyChange("subject") //@NotifyChange annotates data changed notification after calling this method
+	@NotifyChange({"subject","hint"}) //@NotifyChange annotates data changed notification after calling this method
 	public void addTodo(){
 		if(Strings.isBlank(subject)){
 			Clients.showNotification("Subject is blank, nothing to do ?");
@@ -85,6 +86,10 @@ public class TodoListViewModel implements Serializable{
 
 	public void setSubject(String subject) {
 		this.subject = subject;
+	}
+
+	public String getHint(){
+		return hints[new Random().nextInt(3)];
 	}
 
 }
