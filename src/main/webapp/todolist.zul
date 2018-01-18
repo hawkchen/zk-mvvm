@@ -14,12 +14,13 @@
                 <listheader hflex="min"/>   <!-- delete button -->
             </listhead>
             <template name="model">
-                <listitem sclass="@load(each.complete?'complete-todo':'')">
+                <listitem >
                     <listcell>
                         <checkbox checked="@init(each.complete)@save(each.complete)" onCheck="@command('completeTodo',todo=each)"/>
                     </listcell>
                     <listcell>
-                        <textbox value="@init(each.subject)@save(each.subject)" inplace="true" width="100%" onChange="@command('updateTodo', todo=each)"/>
+                        <textbox value="@init(each.subject)@save(each.subject)" inplace="true" width="100%"
+                                 sclass="@load(each.complete?'complete-todo':'')" onChange="@command('updateTodo', todo=each)"/>
                     </listcell>
                     <listcell>
                         <button onClick="@command('deleteTodo',todo=each)" iconSclass="z-icon-times"/>
