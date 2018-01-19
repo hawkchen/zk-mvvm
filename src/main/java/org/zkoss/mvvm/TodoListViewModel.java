@@ -32,7 +32,7 @@ public class TodoListViewModel {
 	}
 
 	@Command //@Command declares a command method
-	@NotifyChange("subject") //@NotifyChange annotates data changed notification after calling this method
+	@NotifyChange("subject") //@NotifyChange tells ZK which property changed by this method
 	public void addTodo(){
 		if(Strings.isBlank(subject)){
 			Clients.showNotification("Subject is blank, nothing to do ?");
