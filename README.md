@@ -1,6 +1,9 @@
 # ZK MVVM 
 A project to introduce ZK MVVM pattern
 
+# Articles
+* [ZK MVVM Pattern: Server-Side Data Binding](https://dzone.com/articles/zk-mvvm-approach-server-side-data-binding)
+
 # How to Run
 ## No Maven installed
 You can run the project with maven wrapper by the command below (it will automatically download required maven):
