@@ -1,0 +1,38 @@
+<?import org.zkoss.mvvm.shadow.Role?>
+<zk>
+    <div viewModel="@id('vm')@init('org.zkoss.mvvm.shadow.RoleAccessViewModel')" width="50%" style="margin:auto">
+
+        <hlayout style="text-align: right">
+            Login as
+            <combobox readonly="true" model="@init(vm.roleList)" selectedItem="@bind(vm.role)" />
+        </hlayout>
+        <menubar>
+            <menu label="File">
+                <menupopup>
+                    <menuitem label="New"/>
+                    <menuitem label="Open"/>
+                    <menuitem label="Close"/>
+                </menupopup>
+            </menu>
+            <menu label="Edit">
+                <menupopup>
+                    <menuitem label="Undo"/>
+                    <menuitem label="Redo"/>
+                    <menuitem label="Cut"/>
+                    <menuitem label="Copy"/>
+                    <menuitem label="Paste"/>
+                    <menuitem label="Select All"/>
+                </menupopup>
+            </menu>
+            <!--<if test="@load(vm.admin)">-->
+            <if test="@load(vm.role eq Role.ADMIN)">
+            <menu label="Admin">
+                <menupopup>
+                    <menuitem label="Permission"/>
+                    <menuitem label="Settings"/>
+                </menupopup>
+            </menu>
+            </if>
+        </menubar>
+    </div>
+</zk>

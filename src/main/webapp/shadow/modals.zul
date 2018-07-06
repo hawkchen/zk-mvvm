@@ -1,0 +1,35 @@
+<?import org.zkoss.mvvm.shadow.ModalType?>
+<zk>
+    <div viewModel="@id('vm')@init('org.zkoss.mvvm.shadow.ModalsViewModel')" width="50%" style="margin:auto">
+        <vlayout>
+
+        <combobox readonly="true" model="@init(ModalType.values())" selectedItem="@bind(vm.type)"/>
+        <textbox value="@bind(vm.message)" hflex="1" />
+            <button onClick="@command('add')" label="add" />
+        </vlayout>
+        <vlayout>
+
+            <forEach items="@load(vm.modalList)">
+                <apply template="@init(each.type)" />
+            </forEach>
+        </vlayout>
+        <template name="INFO">
+            <window mode="overlapped" closable="true">
+                <caption iconSclass="z-icon-info" style="color:skyblue;font-size:36px"/>
+                <label value="@init(each.message)"/>
+            </window>
+        </template>
+        <template name="WARN">
+            <window mode="overlapped" closable="true">
+                <caption iconSclass="z-icon-warning" style="color:orange;font-size:36px"/>
+                <label value="@init(each.message)"/>
+            </window>
+        </template>
+        <template name="ERROR">
+            <window mode="overlapped" closable="true">
+                <caption iconSclass="z-icon-times" style="color:red;font-size:36px"/>
+                <label value="@init(each.message)"/>
+            </window>
+        </template>
+    </div>
+</zk>
