@@ -1,0 +1,5 @@
+<zk>
+    <label value="@init(person.firstName)"/>
+    <label value="@init(person.lastName)"/>
+    <label value="@init(person.age)"/>
+</zk>
