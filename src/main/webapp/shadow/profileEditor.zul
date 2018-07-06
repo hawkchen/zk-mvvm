@@ -1,0 +1,22 @@
+<zk xmlns:n="native">
+    <div viewModel="@id('vm')@init('org.zkoss.mvvm.shadow.ProfileEditorVM')" style="width: 20%; margin:20px 0px 0px 20px">
+        <button label="@load(vm.edit? 'Done' : 'Edit')" onClick="@command('toggle')"/>
+        <groupbox hflex="min" style="margin:auto; text-align:center">
+            <vlayout >
+                <n:i class="z-icon-user" style="font-size:72px; color: #0cafac"/>
+                <apply template="@load(vm.edit?'edit':'normal')"/>
+            </vlayout>
+        </groupbox>
+    </div>
+
+    <template name="normal">
+        <label value="@init(vm.person.firstName)"/>
+        <label value="@init(vm.person.lastName)"/>
+        <label value="@init(vm.person.age)"/>
+    </template>
+    <template name="edit">
+        <textbox value="@bind(vm.person.firstName)"/>
+        <textbox value="@bind(vm.person.lastName)"/>
+        <intbox value="@bind(vm.person.age)"/>
+    </template>
+</zk>
