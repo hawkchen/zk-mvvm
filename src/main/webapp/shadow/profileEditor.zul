@@ -8,6 +8,7 @@
             </vlayout>
         </window>
         <separator height="50px"/>
+        <n:h1>Passing a parameter</n:h1>
         <window border="normal" hflex="min" style="margin:auto; text-align:center">
             <vlayout >
                 <n:i class="z-icon-user" style="font-size:72px; color: #0cafac"/>
