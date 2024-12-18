@@ -11,4 +11,4 @@ updates:
       interval: "daily"
     ignore:
       - dependency-name: "zkmax"
-        versions: "*-Eval"
+        versions: "10.*-Eval"
